@@ -7,11 +7,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kunall17.gamechanceass.R;
 import com.kunall17.gamechanceass.adapter.IssueAdapter;
+import com.kunall17.gamechanceass.databinding.ActivityMainBinding;
 import com.kunall17.gamechanceass.viewmodels.IssueViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,18 +41,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        feedRv = findViewById(R.id.recycler_view);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        feedRv = binding.recyclerView;
         issueViewModel = new IssueViewModel();
-
         setTitle("Issues");
+
         IssueAdapter adapter = new IssueAdapter(issueViewModel);
-        adapter.setHasStableIds(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.setAdapter(adapter);
         feedRv.setHasFixedSize(true);
         feedRv.setLayoutManager(layoutManager);
-        feedRv.setAdapter(adapter);
         issueViewModel.getIssueList().observe(this, adapter::setData);
         issueViewModel.getIsLoading().observe(this, this::showLoader);
     }

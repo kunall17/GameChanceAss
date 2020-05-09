@@ -7,11 +7,13 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kunall17.gamechanceass.R;
 import com.kunall17.gamechanceass.adapter.CommentAdapter;
+import com.kunall17.gamechanceass.databinding.ActivityMainBinding;
 import com.kunall17.gamechanceass.viewmodels.CommentViewModel;
 
 public class CommentsActivity extends AppCompatActivity {
@@ -39,13 +41,16 @@ public class CommentsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        feedRv = binding.recyclerView;
 
         feedRv = findViewById(R.id.recycler_view);
         dataViewModel = new CommentViewModel(getIntent().getIntExtra(ARG_COMMENT_ID, -1));
         setTitle("Comments");
+
         CommentAdapter adapter = new CommentAdapter();
-        adapter.setHasStableIds(true);
+        binding.setAdapter(adapter);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         feedRv.setHasFixedSize(true);
         feedRv.setLayoutManager(layoutManager);
