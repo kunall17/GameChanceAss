@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:text="firebase / firebase-ios-sdk"
+        android:textSize="10sp"
+        android:layout_marginLeft="12dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="50dp"
+        android:hint="Comment here"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="12dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:padding="4dp"
+        android:text="4/5"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:layout_marginRight="12dp"
+        android:layout_alignParentRight="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time"
+        android:layout_alignEnd="@id/title"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/square"
+        android:padding="6dp"
+        android:text="4/5"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        android:layout_alignParentRight="true"
+        android:layout_alignRight="@id/title"
+        android:layout_marginRight="12dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="12dp"
+        android:background="#B2424242" />
+
+</RelativeLayout>

@@ -1,0 +1,2 @@
+rootProject.name='GameChanceAss'
+include ':app'
